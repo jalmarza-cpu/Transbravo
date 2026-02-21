@@ -181,6 +181,84 @@
       opacity: 1;
       transform: none
     }
+
+    /* ===== SCROLL CINEMA ===== */
+    #scroll-cinema {
+      height: 300vh;
+      position: relative
+    }
+
+    #scroll-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    #scroll-vid {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: relative;
+      z-index: 2
+    }
+
+    .scroll-label {
+      position: absolute;
+      bottom: 12%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 10;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .6s ease
+    }
+
+    .scroll-label.active {
+      opacity: 1
+    }
+
+    .scroll-label .label-eyebrow {
+      color: rgba(255, 255, 255, .45);
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .35em;
+      margin-bottom: .5rem;
+      font-family: 'Roboto', sans-serif
+    }
+
+    .scroll-label .label-title {
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, .8)
+    }
+
+    @keyframes scrollHintAnim {
+
+      0%,
+      100% {
+        opacity: .7;
+        transform: translateY(0)
+      }
+
+      50% {
+        opacity: .2;
+        transform: translateY(6px)
+      }
+    }
+
+    #scroll-hint-arrow {
+      animation: scrollHintAnim 1.6s ease-in-out infinite
+    }
   </style>
 </head>
 
@@ -526,72 +604,68 @@
     </div>
   </section>
 
-  <!-- ===== VIDEO SECTION ===== -->
-  <section id="video" class="py-24 bg-black border-t border-white/10 scroll-mt-20 relative overflow-hidden">
-    <!-- Ambient glow -->
-    <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-orange/10 blur-[120px] rounded-full pointer-events-none">
-    </div>
-    <div class="container mx-auto px-4 md:px-8 relative z-10">
-      <!-- Header -->
-      <div class="text-center mb-12 fade-up">
-        <div
-          class="inline-flex items-center gap-2 px-4 py-1.5 rounded border border-brand-orange/40 bg-brand-orange/10 mb-5">
-          <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse inline-block"></span>
-          <span class="text-brand-orange text-xs font-bold uppercase tracking-widest">Transbravo en Acción</span>
-        </div>
-        <h2
-          class="font-display font-bold text-4xl md:text-5xl text-white uppercase mb-4 drop-shadow-[0_4px_4px_rgba(0,0,0,1)]">
-          Mira Cómo <span class="orange-text">Transformamos tu Obra</span>
-        </h2>
-        <p class="text-gray-400 text-lg max-w-2xl mx-auto font-light">
-          De terreno en bruto a faena lista. Así trabaja Transbravo: con precisión, maquinaria propia y compromiso total
-          con tu proyecto.
-        </p>
+  <!-- ===== SCROLL CINEMA ===== -->
+  <section id="scroll-cinema">
+    <div id="scroll-sticky">
+
+      <!-- Ambient glow -->
+      <div
+        style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,102,0,.05) 0%,transparent 65%);pointer-events:none;z-index:1">
       </div>
 
-      <!-- Video Player -->
-      <div class="max-w-4xl mx-auto fade-up">
-        <div
-          class="relative rounded-2xl overflow-hidden border border-white/15 shadow-[0_0_60px_rgba(255,102,0,0.15)] group">
-          <!-- Top accent bar -->
-          <div class="absolute top-0 left-0 w-full h-1 orange-btn z-10"></div>
+      <!-- Video scrubbing -->
+      <video id="scroll-vid" preload="auto" muted playsinline>
+        <source src="videos/transform-scroll.mp4" type="video/mp4">
+      </video>
 
-          <!-- Video element -->
-          <video id="main-video" class="w-full aspect-video bg-black"
-            poster="images/equipos-maquinaria/maquinaria-con-nombre-marca-v2.png" preload="none" controls playsinline>
-            <source src="videos/Video-transformacion-marca-a-producto.mp4" type="video/mp4">
-            Tu navegador no soporta video HTML5.
-          </video>
-
-          <!-- Custom Play Overlay (visible antes de reproducir) -->
-          <div id="video-overlay"
-            class="absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer transition-opacity duration-300"
-            onclick="playVideo()">
-            <div
-              class="w-20 h-20 rounded-full orange-btn flex items-center justify-center shadow-[0_0_40px_rgba(255,102,0,0.5)] hover:scale-110 transition-transform group-hover:scale-105">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-                <polygon points="5 3 19 12 5 21 5 3" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- CTA below video -->
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 px-2">
-          <p class="text-gray-500 text-sm">
-            <span class="text-brand-orange font-bold">Transbravo</span> · Movimiento de Tierras · Región Metropolitana
-          </p>
-          <a href="#contacto"
-            class="orange-btn text-white font-bold py-3 px-7 rounded-lg flex items-center gap-2 uppercase tracking-wide text-sm hover:brightness-110 transition-all">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="22 2 11 13" />
-              <polygon points="22 2 15 22 11 13 2 9 22 2" />
-            </svg>
-            Cotizar Mi Proyecto
-          </a>
+      <!-- Progress bar -->
+      <div style="position:absolute;bottom:0;left:0;width:100%;height:3px;background:rgba(255,255,255,.08);z-index:10">
+        <div id="scroll-prog"
+          style="height:100%;width:0%;background:linear-gradient(90deg,#FF9800,#FF5722);transition:width .08s linear">
         </div>
       </div>
+
+      <!-- Label 1 -->
+      <div class="scroll-label" id="sl-1">
+        <p class="label-eyebrow">Desde el primer trazo</p>
+        <h2 class="label-title">Del Logo a la Máquina</h2>
+      </div>
+
+      <!-- Label 2 -->
+      <div class="scroll-label" id="sl-2">
+        <p class="label-eyebrow">Maquinaria Propia</p>
+        <h2 class="label-title">Retroexcavadora · Tolva · Bobcat</h2>
+      </div>
+
+      <!-- Label 3 -->
+      <div class="scroll-label" id="sl-3">
+        <p class="label-eyebrow">Cobertura Total</p>
+        <h2 class="label-title">Toda la Región Metropolitana</h2>
+      </div>
+
+      <!-- Label 4: CTA -->
+      <div class="scroll-label" id="sl-4">
+        <p class="label-eyebrow">¿Listo para empezar?</p>
+        <h2 class="label-title">Tu Proyecto. Nuestra Maquinaria.</h2>
+        <button onclick="goToContact()"
+          style="margin-top:1.2rem;display:inline-flex;align-items:center;gap:.5rem;font-family:'Roboto',sans-serif;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;padding:.75rem 1.75rem;border-radius:.5rem;pointer-events:auto"
+          class="orange-btn text-white">
+          Solicitar Cotización →
+        </button>
+      </div>
+
+      <!-- Scroll hint -->
+      <div id="scroll-hint"
+        style="position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:10;text-align:center;transition:opacity .5s ease">
+        <p
+          style="color:rgba(255,255,255,.35);font-size:.65rem;text-transform:uppercase;letter-spacing:.3em;margin-bottom:.5rem;font-family:'Roboto',sans-serif">
+          Scroll</p>
+        <svg id="scroll-hint-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6600"
+          stroke-width="2">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+
     </div>
   </section>
 
@@ -1076,22 +1150,59 @@
     });
     function resetForm() { document.getElementById('contact-form').reset(); document.getElementById('contact-form').classList.remove('hidden'); document.getElementById('form-success').classList.add('hidden'); }
 
-    // Video play overlay
-    function playVideo() {
-      const overlay = document.getElementById('video-overlay');
-      const video = document.getElementById('main-video');
-      overlay.style.opacity = '0';
-      overlay.style.pointerEvents = 'none';
-      video.play();
-    }
-    const mainVideo = document.getElementById('main-video');
-    function showVideoOverlay() {
-      const overlay = document.getElementById('video-overlay');
-      overlay.style.opacity = '1';
-      overlay.style.pointerEvents = 'auto';
-    }
-    mainVideo.addEventListener('pause', showVideoOverlay);
-    mainVideo.addEventListener('ended', showVideoOverlay);
+    // ===== SCROLL CINEMA ENGINE =====
+    (function () {
+      const vid = document.getElementById('scroll-vid');
+      const cinema = document.getElementById('scroll-cinema');
+      const prog = document.getElementById('scroll-prog');
+      const hint = document.getElementById('scroll-hint');
+      const labels = [
+        { el: document.getElementById('sl-1'), from: 0.00, to: 0.28 },
+        { el: document.getElementById('sl-2'), from: 0.25, to: 0.52 },
+        { el: document.getElementById('sl-3'), from: 0.50, to: 0.76 },
+        { el: document.getElementById('sl-4'), from: 0.74, to: 1.00 }
+      ];
+
+      let duration = 0;
+
+      function onMeta() {
+        duration = vid.duration;
+        // seek to frame 0 immediately so poster doesn't show
+        vid.currentTime = 0;
+      }
+
+      vid.addEventListener('loadedmetadata', onMeta);
+      // try right away if already loaded
+      if (vid.readyState >= 1) onMeta();
+
+      function updateCinema() {
+        if (!duration) return;
+        const rect = cinema.getBoundingClientRect();
+        const scrollableH = cinema.offsetHeight - window.innerHeight;
+        const scrolled = Math.max(0, -rect.top);
+        const p = Math.min(1, scrolled / scrollableH);
+
+        // Drive video frame
+        const target = p * duration;
+        if (Math.abs(vid.currentTime - target) > 0.05) {
+          vid.currentTime = target;
+        }
+
+        // Progress bar
+        prog.style.width = (p * 100) + '%';
+
+        // Scroll hint
+        hint.style.opacity = p < 0.04 ? '1' : '0';
+
+        // Text labels
+        labels.forEach(({ el, from, to }) => {
+          el.classList.toggle('active', p >= from && p < to);
+        });
+      }
+
+      window.addEventListener('scroll', updateCinema, { passive: true });
+      updateCinema();
+    })();
   </script>
 </body>
 
