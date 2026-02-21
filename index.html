@@ -34,7 +34,23 @@
     .orange-btn {
       background: linear-gradient(180deg, #FF9800 0%, #FF5722 45%, #E64A19 50%, #D84315 100%);
       border: 1px solid #BF360C;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 4px 6px rgba(0, 0, 0, .3)
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .4),
+        0 4px 6px rgba(0, 0, 0, .3),
+        0 0 12px rgba(255, 102, 0, .45),
+        0 0 28px rgba(255, 102, 0, .2),
+        0 0 56px rgba(255, 102, 0, .08);
+      transition: box-shadow .3s ease, filter .3s ease
+    }
+
+    .orange-btn:hover {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .4),
+        0 6px 12px rgba(0, 0, 0, .4),
+        0 0 18px rgba(255, 102, 0, .65),
+        0 0 40px rgba(255, 102, 0, .35),
+        0 0 80px rgba(255, 102, 0, .15);
+      filter: brightness(1.08)
     }
 
     .orange-text {
@@ -104,10 +120,28 @@
       }
     }
 
+    /* ===== NAVBAR STICKY ANIMADO ===== */
+    #navbar {
+      background: rgba(0, 0, 0, 0);
+      transition: background .4s ease, box-shadow .4s ease, padding .4s ease
+    }
+
     nav.scrolled {
-      background: rgba(15, 15, 15, .97) !important;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, .6)
+      background: rgba(10, 10, 10, .96) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 2px 30px rgba(0, 0, 0, .7);
+      padding-top: .6rem !important;
+      padding-bottom: .6rem !important
+    }
+
+    #nav-logo {
+      transition: height .4s ease, width .4s ease
+    }
+
+    nav.scrolled #nav-logo {
+      height: 2.25rem;
+      width: 2.25rem
     }
 
     input,
@@ -153,19 +187,18 @@
 <body class="bg-brand-dark font-sans text-white antialiased">
 
   <!-- ===== NAVBAR ===== -->
-  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+  <nav id="navbar" class="fixed w-full z-50 py-4">
     <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
-      <a href="#" class="flex items-center gap-3 shrink-0">
-        <img src="images/logos/Logo-sin-texto-sin-fondo.png" alt="Transbravo Logo" class="h-12 w-12 object-contain" />
-        <div>
-          <img src="images/logos/Logo-con-texto-sin-fondo.png" alt="TRANSBRAVO"
-            class="h-10 object-contain hidden md:block" />
-          <span class="md:hidden font-display font-bold text-xl text-white tracking-tight">TRANSBRAVO</span>
-          <span
-            class="hidden md:block text-[10px] text-gray-400 tracking-widest uppercase leading-tight mt-0.5">Movimiento
-            de Tierra · Maquinaria · RM</span>
+      <!-- Logo único -->
+      <a href="#" class="flex items-center gap-3 shrink-0 group">
+        <img id="nav-logo" src="images/logos/Logo-sin-texto-sin-fondo.png" alt="Transbravo"
+          class="h-12 w-12 object-contain" />
+        <div class="leading-tight">
+          <span class="block font-display font-bold text-white tracking-tight text-lg md:text-xl">TRANSBRAVO</span>
+          <span class="block text-[10px] text-gray-400 tracking-widest uppercase">Movimiento de Tierra · RM</span>
         </div>
       </a>
+      <!-- Desktop nav -->
       <div class="hidden md:flex items-center gap-8">
         <a href="#servicios"
           class="text-gray-300 hover:text-brand-orange transition-colors uppercase tracking-wider text-sm font-medium">Servicios</a>
@@ -173,10 +206,10 @@
           class="text-gray-300 hover:text-brand-orange transition-colors uppercase tracking-wider text-sm font-medium">Equipos</a>
         <a href="#nosotros"
           class="text-gray-300 hover:text-brand-orange transition-colors uppercase tracking-wider text-sm font-medium">Nosotros</a>
-        <a href="#contacto"
-          class="orange-btn text-white font-bold py-2 px-6 rounded uppercase text-sm hover:brightness-110 transition-all">Cotizar
+        <a href="#contacto" class="orange-btn text-white font-bold py-2 px-6 rounded uppercase text-sm">Cotizar
           Ahora</a>
       </div>
+      <!-- Hamburger -->
       <button id="menu-btn" class="md:hidden text-white p-2 focus:outline-none" aria-label="Abrir menú">
         <svg id="ico-open" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
           stroke-width="2.2">
@@ -191,7 +224,8 @@
         </svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-brand-dark/98 backdrop-blur-md">
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-black/95 backdrop-blur-md">
       <div class="flex flex-col items-center gap-4 py-6 px-4 text-center">
         <a href="#servicios"
           class="nav-link font-display text-xl text-white hover:text-brand-orange uppercase transition-colors">Servicios</a>
@@ -421,9 +455,11 @@
           nuestra flota certificada — sin depender de terceros ni excusas.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="black-chrome rounded-xl overflow-hidden card-hover">
+        <!-- Camiones Tolva -->
+        <div class="black-chrome rounded-xl overflow-hidden card-hover" onclick="goToContact()">
+          <div class="bar"></div>
           <div class="h-48 overflow-hidden">
-            <img src="images/equipos-maquinaria/camion_tolva.png" alt="Camión Tolva Transbravo"
+            <img src="images/equipos-maquinaria/camion_tolva.png" alt="Camión Tolva Transbravo" loading="lazy"
               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
           <div class="p-6">
@@ -432,16 +468,19 @@
               Freightliner FL12</p>
             <p class="text-gray-400 text-sm leading-relaxed mb-4">Alto tonelaje para retiro rápido de escombros y
               excedentes en toda la Región Metropolitana. Coordinación inmediata.</p>
-            <div class="border-t border-white/10 pt-4">
-              <p class="text-xs text-gray-500 uppercase tracking-widest">👉 Aptos para obras pequeñas y medianas en la
-                RM</p>
+            <div class="border-t border-white/10 pt-4 flex items-center justify-between">
+              <p class="text-xs text-gray-500 uppercase tracking-widest">Aptos para obras en toda la RM</p>
+              <span
+                class="orange-btn text-xs font-bold text-white uppercase tracking-widest px-3 py-1.5 rounded">Cotizar</span>
             </div>
           </div>
         </div>
-        <div class="black-chrome rounded-xl overflow-hidden card-hover">
+        <!-- Retroexcavadora -->
+        <div class="black-chrome rounded-xl overflow-hidden card-hover" onclick="goToContact()">
+          <div class="bar"></div>
           <div class="h-48 overflow-hidden">
             <img src="images/equipos-maquinaria/retroexcavadora.png" alt="Retroexcavadora New Holland Transbravo"
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
           <div class="p-6">
             <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Retroexcavadora</h3>
@@ -452,26 +491,35 @@
               <li>Preparación de terrenos</li>
               <li>Fundaciones y fosas</li>
             </ul>
-            <div class="border-t border-white/10 pt-4">
+            <div class="border-t border-white/10 pt-4 flex items-center justify-between">
               <p class="text-xs text-gray-500 uppercase tracking-widest">Precisión en distintos tipos de suelo</p>
+              <span
+                class="orange-btn text-xs font-bold text-white uppercase tracking-widest px-3 py-1.5 rounded">Cotizar</span>
             </div>
           </div>
         </div>
-        <div class="black-chrome rounded-xl overflow-hidden card-hover">
+        <!-- Minicargador -->
+        <div class="black-chrome rounded-xl overflow-hidden card-hover" onclick="goToContact()">
+          <div class="bar"></div>
           <div class="h-48 overflow-hidden">
             <img src="images/equipos-maquinaria/minicargador.png" alt="Minicargador Bobcat S160 Transbravo"
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
           <div class="p-6">
             <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Minicargador</h3>
             <p class="text-brand-orange font-bold text-sm uppercase tracking-wider mb-3">Bobcat S160</p>
             <p class="text-gray-400 text-sm leading-relaxed mb-3">Donde la maquinaria grande no puede entrar, el Bobcat
               encuentra el camino. Ideal para obras urbanas y espacios reducidos.</p>
-            <ul class="text-gray-300 text-sm space-y-1.5 list-disc list-inside">
+            <ul class="text-gray-300 text-sm space-y-1.5 list-disc list-inside mb-4">
               <li>Carga y distribución de áridos</li>
               <li>Limpieza de terrenos</li>
               <li>Apoyo a excavaciones</li>
             </ul>
+            <div class="border-t border-white/10 pt-4 flex items-center justify-between">
+              <p class="text-xs text-gray-500 uppercase tracking-widest">Obras urbanas y espacios reducidos</p>
+              <span
+                class="orange-btn text-xs font-bold text-white uppercase tracking-widest px-3 py-1.5 rounded">Cotizar</span>
+            </div>
           </div>
         </div>
       </div>
@@ -874,45 +922,123 @@
 
   <!-- ===== SERVICE MODAL ===== -->
   <div id="svc-modal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
-    <div class="bg-[#111] border border-white/15 rounded-2xl max-w-md w-full p-8 relative shadow-2xl">
+    <div class="bg-[#1a1a1a] border border-white/15 rounded-2xl max-w-xl w-full relative shadow-2xl overflow-hidden"
+      style="max-height:90vh;overflow-y:auto">
+      <!-- Close btn -->
       <button onclick="closeModal()"
-        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-gray-400 hover:text-white transition-colors text-xl leading-none">&times;</button>
-      <div id="m-icon" class="text-brand-orange mb-4"></div>
-      <h3 id="m-title" class="font-display font-bold text-2xl text-white uppercase mb-4"></h3>
-      <p id="m-desc" class="text-gray-400 leading-relaxed text-sm mb-5"></p>
-      <ul id="m-specs" class="space-y-2 mb-5"></ul>
-      <p id="m-machine"
-        class="text-xs text-brand-orange uppercase font-bold tracking-widest border-t border-white/10 pt-4 mb-5"></p>
-      <a href="#contacto" onclick="closeModal()"
-        class="orange-btn w-full text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center uppercase tracking-wide hover:brightness-110 transition-all">Cotizar
-        Este Servicio &rarr;</a>
+        class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center text-gray-400 hover:text-white transition-colors text-xl leading-none">&times;</button>
+      <!-- Header -->
+      <div class="p-8 pb-0">
+        <div class="flex items-center gap-4 mb-2">
+          <div id="m-icon" class="text-white w-10 h-10 shrink-0"></div>
+          <div>
+            <h3 id="m-title" class="font-display font-bold text-2xl md:text-3xl text-white uppercase leading-tight">
+            </h3>
+            <p class="text-gray-500 text-xs uppercase tracking-widest font-bold mt-0.5">Ficha Técnica de Servicio</p>
+          </div>
+        </div>
+      </div>
+      <!-- Body -->
+      <div class="px-8 pb-8 pt-6 space-y-6">
+        <!-- Descripción -->
+        <p id="m-desc" class="text-gray-300 leading-relaxed text-base"></p>
+        <!-- Especificaciones -->
+        <div class="bg-[#111] border border-white/10 rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6600" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <span class="font-bold text-white uppercase tracking-widest text-sm">Especificaciones</span>
+          </div>
+          <div id="m-specs" class="grid grid-cols-2 gap-x-6 gap-y-2"></div>
+        </div>
+        <!-- Maquinaria -->
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+              <rect x="1" y="3" width="15" height="13" rx="2" />
+              <path d="M16 8h4l3 3v5h-7V8z" />
+              <circle cx="5.5" cy="18.5" r="2.5" />
+              <circle cx="18.5" cy="18.5" r="2.5" />
+            </svg>
+            <span class="font-bold text-white uppercase tracking-widest text-sm">Maquinaria Utilizada</span>
+          </div>
+          <p id="m-machine" class="text-gray-400 text-sm leading-relaxed"></p>
+        </div>
+        <!-- Divider -->
+        <div class="border-t border-white/10"></div>
+        <!-- CTA -->
+        <button onclick="goToContact()"
+          class="orange-btn w-full text-white font-bold py-3.5 px-6 rounded-lg flex items-center justify-center gap-2 uppercase tracking-widest text-sm hover:brightness-110 transition-all">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path
+              d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12 19.79 19.79 0 011.47 3.46A2 2 0 013.45 1.28h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+          </svg>
+          Cotizar Este Servicio
+        </button>
+      </div>
     </div>
   </div>
 
   <!-- ===== SCRIPTS ===== -->
   <script>
     const SVC = {
-      escombros: { title: 'Retiro de Escombros', desc: 'La acumulación de escombros frena el avance de tu construcción y puede generar multas. En Transbravo gestionamos el retiro rápido de excedentes, demoliciones y basura con nuestra flota de camiones tolva, asegurando disposición en vertederos autorizados.', specs: ['Retiro de escombros de construcción', 'Limpieza de restos de demolición', 'Disposición en botaderos autorizados', 'Camiones Tolva de alto tonelaje'], machine: 'Maquinaria: Camiones Tolva International 7400 y Freightliner FL12.' },
-      tierras: { title: 'Movimiento de Tierras', desc: 'Un terreno mal nivelado compromete la estructura de tu proyecto. Ejecutamos movimientos de tierra masivos y de precisión, garantizando las cotas exactas y la estabilidad que tu obra necesita.', specs: ['Cortes y rellenos', 'Perfilado de taludes', 'Mejoramiento de suelos', 'Compactación técnica'], machine: 'Maquinaria: Retroexcavadora New Holland y Minicargador Bobcat S160.' },
-      preparacion: { title: 'Preparación de Terrenos', desc: 'Antes de construir, necesitas un lienzo limpio. Eliminamos capa vegetal, raíces y basura, entregándote una plataforma nivelada y lista para las fundaciones.', specs: ['Limpieza de parcelas', 'Nivelación láser', 'Preparación de cancha', 'Despeje de capa vegetal'], machine: 'Maquinaria: Retroexcavadora New Holland.' },
-      excavaciones: { title: 'Excavaciones Generales', desc: 'Una excavación mal hecha puede romper servicios básicos y costar millones. Nuestros operadores realizan zanjas para servicios, fosas y piscinas con cuidado y precisión técnica.', specs: ['Zanjas para servicios básicos', 'Excavación para piscinas', 'Fosas y cámaras sépticas', 'Fundaciones de obras'], machine: 'Maquinaria: Retroexcavadora New Holland.' },
-      minicargador: { title: 'Servicio de Minicargador', desc: 'No detengas la obra por falta de espacio. Nuestro servicio de minicargador es la solución ágil para mover materiales y limpiar en lugares estrechos o de difícil acceso.', specs: ['Trabajo en espacios reducidos', 'Carga y distribución de áridos', 'Barrido y limpieza de faena', 'Apoyo a excavaciones'], machine: 'Maquinaria: Minicargador Bobcat S160.' }
+      escombros: {
+        title: 'Retiro de Escombros',
+        icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+        desc: 'La acumulación de escombros frena el avance de tu construcción y puede generar multas ambientales. En Transbravo retiramos escombros, restos de demolición y material inerte de forma inmediata con camiones tolva propios y disposición certificada en vertederos autorizados.',
+        specs: ['Escombros de construcción', 'Disposición en vertederos autorizados', 'Restos de demolición', 'Camiones de alto tonelaje'],
+        machine: 'Camiones Tolva International 7400 y Freightliner FL12. Capacidad para obras de cualquier escala en toda la Región Metropolitana.'
+      },
+      tierras: {
+        title: 'Movimiento de Tierras',
+        icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h20M6 20V10l6-6 6 6v10"/><path d="M10 20v-5h4v5"/></svg>`,
+        desc: 'Un terreno mal nivelado compromete la estructura de tu proyecto y puede costar millones en correcciones. Ejecutamos movimientos de tierra masivos y de precisión con maquinaria propia, garantizando las cotas exactas y la estabilidad que tu obra necesita.',
+        specs: ['Cortes y rellenos de terreno', 'Perfilado de taludes', 'Mejoramiento de suelos', 'Compactación técnica'],
+        machine: 'Retroexcavadora New Holland y Minicargador Bobcat S160. Precisión milimétrica en distintos tipos de suelo.'
+      },
+      preparacion: {
+        title: 'Preparación de Terrenos',
+        icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/><line x1="2" y1="20" x2="22" y2="20"/><path d="M2 10l10-6 10 6"/></svg>`,
+        desc: 'Antes de construir, necesitas un lienzo limpio. Eliminamos capa vegetal, raíces y basura, entregándote una plataforma nivelada y lista para las fundaciones de tu casa o galpón.',
+        specs: ['Limpieza de parcelas', 'Nivelación láser', 'Preparación de cancha', 'Despeje de capa vegetal'],
+        machine: 'Retroexcavadora New Holland. Capacidad para trabajar en terrenos de cualquier tamaño con precisión técnica.'
+      },
+      excavaciones: {
+        title: 'Excavaciones Generales',
+        icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
+        desc: 'Una excavación mal hecha puede romper servicios básicos y costar millones. Nuestros operadores expertos realizan zanjas para servicios, fosas y piscinas con cuidado y precisión.',
+        specs: ['Zanjas para servicios básicos', 'Excavación para piscinas', 'Fosas y cámaras', 'Fundaciones'],
+        machine: 'Retroexcavadora New Holland. Operadores con experiencia certificada en todo tipo de excavaciones.'
+      },
+      minicargador: {
+        title: 'Servicio de Minicargador',
+        icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="12" height="10" rx="2"/><path d="M14 12h4l2 2v4h-6"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/></svg>`,
+        desc: 'No detengas la obra por falta de espacio. El Bobcat S160 es la solución ágil para mover materiales y limpiar en lugares estrechos o de difícil acceso donde la maquinaria grande no puede entrar.',
+        specs: ['Trabajo en espacios reducidos', 'Carga y distribución de áridos', 'Barrido y limpieza de faena', 'Apoyo a excavaciones'],
+        machine: 'Minicargador Bobcat S160. Ágil, compacto y potente para obras urbanas y espacios reducidos en toda la RM.'
+      }
     };
     function openModal(k) {
       const s = SVC[k];
+      document.getElementById('m-icon').innerHTML = s.icon;
       document.getElementById('m-title').textContent = s.title;
       document.getElementById('m-desc').textContent = s.desc;
-      document.getElementById('m-specs').innerHTML = s.specs.map(x => `<li class="flex items-center gap-2 text-gray-300 text-sm"><span class="text-brand-orange font-bold text-base">✓</span>${x}</li>`).join('');
+      document.getElementById('m-specs').innerHTML = s.specs.map(x => `<p class="text-gray-300 text-sm flex items-start gap-2"><span class="text-brand-orange shrink-0 mt-0.5">●</span>${x}</p>`).join('');
       document.getElementById('m-machine').textContent = s.machine;
       document.getElementById('svc-modal').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
     function closeModal() { document.getElementById('svc-modal').classList.remove('open'); document.body.style.overflow = ''; }
+    function goToContact() { closeModal(); setTimeout(() => { document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' }); }, 80); }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    // Navbar scroll
+    // Navbar sticky animado con shrink del logo
     const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 60;
+      nav.classList.toggle('scrolled', scrolled);
+    }, { passive: true });
 
     // Mobile menu
     const mBtn = document.getElementById('menu-btn'), mMenu = document.getElementById('mobile-menu'), iOpen = document.getElementById('ico-open'), iClose = document.getElementById('ico-close');
@@ -943,7 +1069,7 @@
         else { const r = await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }); if (!r.ok) throw new Error(); }
         document.getElementById('contact-form').classList.add('hidden');
         document.getElementById('form-success').classList.remove('hidden');
-      } catch () {
+      } catch (err) {
         errDiv.classList.remove('hidden'); errDiv.classList.add('flex');
         btn.disabled = false; bTxt.classList.remove('hidden'); bLoad.classList.add('hidden'); bLoad.classList.remove('flex');
       }
@@ -958,11 +1084,14 @@
       overlay.style.pointerEvents = 'none';
       video.play();
     }
-    document.getElementById('main-video').addEventListener('pause', () => {
+    const mainVideo = document.getElementById('main-video');
+    function showVideoOverlay() {
       const overlay = document.getElementById('video-overlay');
       overlay.style.opacity = '1';
       overlay.style.pointerEvents = 'auto';
-    });
+    }
+    mainVideo.addEventListener('pause', showVideoOverlay);
+    mainVideo.addEventListener('ended', showVideoOverlay);
   </script>
 </body>
 
