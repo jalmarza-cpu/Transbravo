@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Movimiento de Tierras y Retiro de Escombros | TRANSBRAVO – San Bernardo, RM</title>
+  <meta name="description"
+    content="Empresa fundada en 2023, especializada en movimiento de tierras, excavaciones y retiro de escombros en la Región Metropolitana. Maquinaria propia, factura electrónica SII." />
+  <meta name="keywords"
+    content="movimiento de tierras San Bernardo, retiro de escombros RM, camión tolva, retroexcavadora, excavaciones, Transbravo" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { 'brand-orange': '#FF6600', 'brand-dark': '#0f0f0f', 'brand-gray': '#1a1a1a' }, fontFamily: { sans: ['Roboto', 'sans-serif'], display: ['Oswald', 'sans-serif'] } } } }
+  </script>
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    .hero-bg {
+      background: linear-gradient(to right, rgba(0, 0, 0, .95) 0%, rgba(0, 0, 0, .75) 60%, rgba(0, 0, 0, .5) 100%), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat fixed
+    }
+
+    .asphalt {
+      background: linear-gradient(rgba(10, 10, 10, .93), rgba(5, 5, 5, .94)), url('https://images.unsplash.com/photo-1533425557766-3d29a5925340?q=80&w=2000&auto=format&fit=crop') repeat 400px fixed
+    }
+
+    .orange-btn {
+      background: linear-gradient(180deg, #FF9800 0%, #FF5722 45%, #E64A19 50%, #D84315 100%);
+      border: 1px solid #BF360C;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 4px 6px rgba(0, 0, 0, .3)
+    }
+
+    .orange-text {
+      background: linear-gradient(180deg, #FF9800 0%, #FF5722 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .black-chrome {
+      background: linear-gradient(180deg, #333 0%, #1a1a1a 40%, #000 100%);
+      border-top: 1px solid #555;
+      border-bottom: 1px solid #000;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .8)
+    }
+
+    .card-hover {
+      transition: transform .3s ease, box-shadow .3s ease;
+      cursor: pointer
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .6)
+    }
+
+    .bar {
+      height: 3px;
+      width: 0;
+      transition: width .35s ease;
+      background: linear-gradient(90deg, #FF9800, #D84315)
+    }
+
+    .card-hover:hover .bar {
+      width: 100%
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, .85);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem
+    }
+
+    .modal-overlay.open {
+      display: flex
+    }
+
+    .wa-pulse {
+      animation: pulse 2s infinite
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 14px rgba(37, 211, 102, .4)
+      }
+
+      50% {
+        box-shadow: 0 4px 28px rgba(37, 211, 102, .7)
+      }
+    }
+
+    nav.scrolled {
+      background: rgba(15, 15, 15, .97) !important;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, .6)
+    }
+
+    input,
+    textarea,
+    select {
+      background: rgba(0, 0, 0, .5);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: .375rem;
+      padding: .9rem 1rem;
+      color: white;
+      width: 100%;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      font-family: 'Roboto', sans-serif;
+      font-size: .95rem
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #FF6600;
+      box-shadow: 0 0 0 2px rgba(255, 102, 0, .2)
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #555
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s ease
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: none
+    }
+  </style>
+</head>
+
+<body class="bg-brand-dark font-sans text-white antialiased">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+    <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-3 shrink-0">
+        <svg width="42" height="42" viewBox="0 0 44 44" fill="none">
+          <rect width="44" height="44" rx="7" fill="#FF6600" /><text x="22" y="30" font-family="Oswald,sans-serif"
+            font-size="18" font-weight="700" fill="white" text-anchor="middle">TB</text>
+        </svg>
+        <div>
+          <span
+            class="font-display font-bold text-xl md:text-2xl text-white tracking-tight leading-none block">TRANSBRAVO</span>
+          <span
+            class="hidden md:block text-[10px] text-gray-400 tracking-widest uppercase leading-tight mt-0.5">Movimiento
+            de Tierra · Maquinaria · RM</span>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#servicios"
+          class="text-gray-300 hover:text-brand-orange transition-colors uppercase tracking-wider text-sm font-medium">Servicios</a>
+        <a href="#equipos"
+          class="text-gray-300 hover:text-brand-orange transition-colors uppercase tracking-wider text-sm font-medium">Equipos</a>
+        <a href="#nosotros"
+          class="text-gray-300 hover:text-brand-orange transition-colors uppercase tracking-wider text-sm font-medium">Nosotros</a>
+        <a href="#contacto"
+          class="orange-btn text-white font-bold py-2 px-6 rounded uppercase text-sm hover:brightness-110 transition-all">Cotizar
+          Ahora</a>
+      </div>
+      <button id="menu-btn" class="md:hidden text-white p-2 focus:outline-none" aria-label="Abrir menú">
+        <svg id="ico-open" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+        <svg id="ico-close" class="hidden" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-brand-dark/98 backdrop-blur-md">
+      <div class="flex flex-col items-center gap-4 py-6 px-4 text-center">
+        <a href="#servicios"
+          class="nav-link font-display text-xl text-white hover:text-brand-orange uppercase transition-colors">Servicios</a>
+        <a href="#equipos"
+          class="nav-link font-display text-xl text-white hover:text-brand-orange uppercase transition-colors">Equipos</a>
+        <a href="#nosotros"
+          class="nav-link font-display text-xl text-white hover:text-brand-orange uppercase transition-colors">Nosotros</a>
+        <a href="#contacto"
+          class="nav-link orange-btn text-white font-bold py-3 px-10 rounded uppercase w-full mt-2">Cotizar Ahora</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-bg relative min-h-screen flex items-center overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,.8)_100%)]"></div>
+    <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-brand-dark to-transparent z-10"></div>
+    <div class="relative z-20 container mx-auto px-4 md:px-8 pt-28 pb-20">
+      <div class="max-w-4xl">
+        <!-- Badges -->
+        <div class="flex flex-wrap gap-3 mb-7">
+          <div class="px-4 py-1.5 rounded border border-brand-orange bg-black/60 backdrop-blur-sm"
+            style="transform:skewX(-6deg)">
+            <span class="block text-brand-orange font-bold uppercase tracking-widest text-xs"
+              style="transform:skewX(6deg)">⚡ Empresa establecida desde 2023</span>
+          </div>
+          <div class="flex items-center gap-2 px-4 py-1.5 rounded border border-white/25 bg-white/10 backdrop-blur-sm"
+            style="transform:skewX(-6deg)">
+            <span class="block text-white font-bold uppercase tracking-widest text-xs" style="transform:skewX(6deg)">✅
+              Emitimos Factura Electrónica SII</span>
+          </div>
+        </div>
+        <!-- H1 PAS -->
+        <h1
+          class="font-display font-bold text-5xl md:text-7xl lg:text-8xl text-white leading-[1.05] mb-6 uppercase drop-shadow-[0_4px_8px_rgba(0,0,0,1)]">
+          ¿Retrasos en tu obra por falta de <span class="orange-text">transporte confiable?</span>
+        </h1>
+        <p
+          class="text-gray-100 text-lg md:text-2xl mb-10 max-w-2xl font-light drop-shadow-md border-l-4 border-brand-orange pl-6">
+          <strong class="text-white block mb-2 font-bold">El tiempo es dinero. Una máquina parada cuesta
+            millones.</strong>
+          Transbravo ejecuta tu movimiento de tierras y retiro de escombros con puntualidad garantizada en toda la RM.
+        </p>
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#contacto"
+            class="orange-btn text-white font-bold py-4 px-8 rounded flex items-center justify-center uppercase tracking-wide hover:brightness-110 transition-all shadow-[0_0_24px_rgba(255,102,0,.35)] hover:shadow-[0_0_36px_rgba(255,102,0,.55)]">Solicitar
+            Cotización &rarr;</a>
+          <a href="#servicios"
+            class="border-2 border-white/40 bg-black/40 text-white hover:bg-brand-orange hover:border-brand-orange font-bold py-4 px-8 rounded flex items-center justify-center uppercase tracking-wide backdrop-blur-md transition-all">Ver
+            Servicios</a>
+        </div>
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-6 mt-16 pt-8 border-t border-white/15">
+          <div class="text-center">
+            <p class="font-display font-bold text-4xl md:text-5xl text-brand-orange">+100</p>
+            <p class="text-gray-400 text-xs uppercase tracking-wider mt-1">Servicios ejecutados</p>
+          </div>
+          <div class="text-center">
+            <p class="font-display font-bold text-4xl md:text-5xl text-brand-orange">3</p>
+            <p class="text-gray-400 text-xs uppercase tracking-wider mt-1">Equipos propios</p>
+          </div>
+          <div class="text-center">
+            <p class="font-display font-bold text-4xl md:text-5xl text-brand-orange">RM</p>
+            <p class="text-gray-400 text-xs uppercase tracking-wider mt-1">Cobertura total</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES BENTO ===== -->
+  <section id="servicios" class="asphalt py-24 scroll-mt-20">
+    <div class="container mx-auto px-4 md:px-8">
+      <div class="mb-14 fade-up">
+        <h2
+          class="font-display font-bold text-4xl md:text-5xl text-white uppercase mb-4 drop-shadow-[0_4px_4px_rgba(0,0,0,1)]">
+          Soluciones que <span class="orange-text">Eliminan Problemas</span> de Obra</h2>
+        <p class="text-gray-300 text-lg max-w-2xl font-light">No dejes que el escombro o el terreno frenen tu avance.
+          Ejecución con estándares técnicos exigentes.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[minmax(280px,auto)]">
+        <!-- Card 1 Wide -->
+        <div class="md:col-span-2 black-chrome rounded-xl overflow-hidden card-hover group"
+          onclick="openModal('escombros')">
+          <div class="bar"></div>
+          <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-start mb-5">
+              <div
+                class="w-16 h-16 rounded-lg flex items-center justify-center border border-brand-orange/60 bg-black/50 text-brand-orange">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="1" y="3" width="15" height="13" rx="2" />
+                  <path d="M16 8h4l3 3v5h-7V8z" />
+                  <circle cx="5.5" cy="18.5" r="2.5" />
+                  <circle cx="18.5" cy="18.5" r="2.5" />
+                </svg>
+              </div>
+              <span class="text-gray-600 group-hover:text-brand-orange transition-colors text-2xl leading-none">+</span>
+            </div>
+            <h3
+              class="font-display font-bold text-2xl text-gray-100 mb-3 uppercase group-hover:text-brand-orange transition-colors tracking-wide">
+              Retiro de Escombros</h3>
+            <p class="text-gray-400 text-sm leading-relaxed flex-grow">¿Tu obra está estancada por la acumulación de
+              basura? Retiramos escombros y material inerte de inmediato con camiones tolva propios y disposición
+              certificada en vertederos autorizados.</p>
+            <div
+              class="orange-btn inline-block text-xs font-bold text-white uppercase tracking-widest px-3 py-1.5 rounded mt-5 w-max">
+              Ver Detalles</div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="black-chrome rounded-xl overflow-hidden card-hover group" onclick="openModal('tierras')">
+          <div class="bar"></div>
+          <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-start mb-5">
+              <div
+                class="w-16 h-16 rounded-lg flex items-center justify-center border border-brand-orange/60 bg-black/50 text-brand-orange">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M2 20h20M6 20V10l6-6 6 6v10" />
+                  <path d="M10 20v-5h4v5" />
+                </svg>
+              </div>
+              <span class="text-gray-600 group-hover:text-brand-orange transition-colors text-2xl leading-none">+</span>
+            </div>
+            <h3
+              class="font-display font-bold text-2xl text-gray-100 mb-3 uppercase group-hover:text-brand-orange transition-colors tracking-wide">
+              Movimiento de Tierras</h3>
+            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Cortes, rellenos y perfilado con precisión
+              milimétrica. Un terreno mal nivelado compromete la estructura y cuesta millones en correcciones
+              posteriores.</p>
+            <div
+              class="orange-btn inline-block text-xs font-bold text-white uppercase tracking-widest px-3 py-1.5 rounded mt-5 w-max">
+              Ver Detalles</div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="black-chrome rounded-xl overflow-hidden card-hover group" onclick="openModal('preparacion')">
+          <div class="bar"></div>
+          <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-start mb-5">
+              <div
+                class="w-16 h-16 rounded-lg flex items-center justify-center border border-brand-orange/60 bg-black/50 text-brand-orange">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <line x1="18" y1="20" x2="18" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="16" />
+                  <line x1="2" y1="20" x2="22" y2="20" />
+                  <path d="M2 10l10-6 10 6" />
+                </svg>
+              </div>
+              <span class="text-gray-600 group-hover:text-brand-orange transition-colors text-2xl leading-none">+</span>
+            </div>
+            <h3
+              class="font-display font-bold text-2xl text-gray-100 mb-3 uppercase group-hover:text-brand-orange transition-colors tracking-wide">
+              Preparación de Terrenos</h3>
+            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Limpiamos, destroncamos y nivelamos tu parcela
+              para dejarla lista para construir. Sin malezas, sin obstáculos, sin sorpresas.</p>
+            <div
+              class="orange-btn inline-block text-xs font-bold text-white uppercase tracking-widest px-3 py-1.5 rounded mt-5 w-max">
+              Ver Detalles</div>
+          </div>
+        </div>
+        <!-- Card 4 Wide -->
+        <div class="md:col-span-2 black-chrome rounded-xl overflow-hidden card-hover group"
+          onclick="openModal('excavaciones')">
+          <div class="bar"></div>
+          <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-start mb-5">
+              <div
+                class="w-16 h-16 rounded-lg flex items-center justify-center border border-brand-orange/60 bg-black/50 text-brand-orange">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path
+                    d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+                </svg>
+              </div>
+              <span class="text-gray-600 group-hover:text-brand-orange transition-colors text-2xl leading-none">+</span>
+            </div>
+            <h3
+              class="font-display font-bold text-2xl text-gray-100 mb-3 uppercase group-hover:text-brand-orange transition-colors tracking-wide">
+              Excavaciones Generales</h3>
+            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Zanjas, piscinas y fosas con operadores expertos.
+              Una excavación mal ejecutada puede romper servicios básicos y costar millones. Evita el riesgo con
+              Transbravo.</p>
+            <div
+              class="orange-btn inline-block text-xs font-bold text-white uppercase tracking-widest px-3 py-1.5 rounded mt-5 w-max">
+              Ver Detalles</div>
+          </div>
+        </div>
+        <!-- Card 5 Full -->
+        <div class="md:col-span-3 black-chrome rounded-xl overflow-hidden card-hover group"
+          onclick="openModal('minicargador')">
+          <div class="bar"></div>
+          <div class="p-8 flex flex-col md:flex-row md:items-center gap-8">
+            <div
+              class="w-16 h-16 rounded-lg flex items-center justify-center border border-brand-orange/60 bg-black/50 text-brand-orange shrink-0">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="8" width="12" height="10" rx="2" />
+                <path d="M14 12h4l2 2v4h-6" />
+                <circle cx="6" cy="20" r="2" />
+                <circle cx="18" cy="20" r="2" />
+              </svg>
+            </div>
+            <div class="flex-grow">
+              <h3
+                class="font-display font-bold text-2xl text-gray-100 mb-2 uppercase group-hover:text-brand-orange transition-colors tracking-wide">
+                Servicio de Minicargador · Bobcat S160</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">¿Espacios reducidos donde la maquinaria grande no puede
+                entrar? Nuestra solución compacta mueve áridos, limpia y carga en lugares de difícil acceso sin detener
+                tu obra.</p>
+            </div>
+            <div
+              class="orange-btn inline-block text-xs font-bold text-white uppercase tracking-widest px-4 py-2 rounded shrink-0">
+              Ver Detalles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MACHINERY ===== -->
+  <section id="equipos" class="py-24 bg-black border-t border-white/10 scroll-mt-20">
+    <div class="container mx-auto px-4 md:px-8">
+      <div class="text-center mb-16 fade-up">
+        <h2
+          class="font-display font-bold text-4xl md:text-5xl text-white uppercase mb-4 drop-shadow-[0_4px_4px_rgba(0,0,0,1)]">
+          Nuestra <span class="orange-text">Maquinaria Propia</span></h2>
+        <p class="text-gray-300 text-lg max-w-3xl mx-auto font-light">Sin intermediarios. Controlamos cada trabajo con
+          nuestra flota certificada — sin depender de terceros ni excusas.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="black-chrome rounded-xl overflow-hidden card-hover">
+          <div class="h-1 orange-btn"></div>
+          <div class="p-8">
+            <div class="mb-5 text-brand-orange"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <rect x="1" y="3" width="15" height="13" rx="2" />
+                <path d="M16 8h4l3 3v5h-7V8z" />
+                <circle cx="5.5" cy="18.5" r="2.5" />
+                <circle cx="18.5" cy="18.5" r="2.5" />
+              </svg></div>
+            <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Camiones Tolva</h3>
+            <p class="text-brand-orange font-bold text-sm uppercase tracking-wider mb-4">International 7400 ·
+              Freightliner FL12</p>
+            <p class="text-gray-400 text-sm leading-relaxed mb-5">Alto tonelaje para retiro rápido de escombros y
+              excedentes en toda la Región Metropolitana. Coordinación inmediata.</p>
+            <div class="border-t border-white/10 pt-4">
+              <p class="text-xs text-gray-500 uppercase tracking-widest">👉 Aptos para obras pequeñas y medianas en la
+                RM</p>
+            </div>
+          </div>
+        </div>
+        <div class="black-chrome rounded-xl overflow-hidden card-hover">
+          <div class="h-1 orange-btn"></div>
+          <div class="p-8">
+            <div class="mb-5 text-brand-orange"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                <polyline points="2 17 12 22 22 17" />
+                <polyline points="2 12 12 17 22 12" />
+              </svg></div>
+            <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Retroexcavadora</h3>
+            <p class="text-brand-orange font-bold text-sm uppercase tracking-wider mb-4">New Holland</p>
+            <ul class="text-gray-300 text-sm space-y-1.5 list-disc list-inside mb-5">
+              <li>Excavaciones generales y zanjas</li>
+              <li>Movimiento de tierras</li>
+              <li>Preparación de terrenos</li>
+              <li>Fundaciones y fosas</li>
+            </ul>
+            <div class="border-t border-white/10 pt-4">
+              <p class="text-xs text-gray-500 uppercase tracking-widest">Precisión en distintos tipos de suelo</p>
+            </div>
+          </div>
+        </div>
+        <div class="black-chrome rounded-xl overflow-hidden card-hover">
+          <div class="h-1 orange-btn"></div>
+          <div class="p-8">
+            <div class="mb-5 text-brand-orange"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="8" width="12" height="10" rx="2" />
+                <path d="M14 12h4l2 2v4h-6v-6z" />
+                <circle cx="6" cy="20" r="2" />
+                <circle cx="18" cy="20" r="2" />
+              </svg></div>
+            <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Minicargador</h3>
+            <p class="text-brand-orange font-bold text-sm uppercase tracking-wider mb-4">Bobcat S160</p>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">Donde la maquinaria grande no puede entrar, el Bobcat
+              encuentra el camino. Ideal para obras urbanas y espacios reducidos.</p>
+            <ul class="text-gray-300 text-sm space-y-1.5 list-disc list-inside">
+              <li>Carga y distribución de áridos</li>
+              <li>Limpieza de terrenos</li>
+              <li>Apoyo a excavaciones</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST / AUTHORITY ===== -->
+  <section id="nosotros" class="py-24 bg-black border-t border-b border-white/10 scroll-mt-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.04]"
+      style="background-image:radial-gradient(#444 1px,transparent 1px);background-size:22px 22px"></div>
+    <div class="container mx-auto px-4 md:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-6 fade-up">
+          <h2 class="font-display font-bold text-3xl md:text-5xl text-white uppercase tracking-tight leading-tight">
+            Cumplimiento Normativo y <span class="orange-text">Respaldo Legal</span></h2>
+          <p class="text-gray-400 text-lg font-light leading-relaxed border-l-4 border-brand-orange pl-6">En Transbravo,
+            la formalidad no es opcional. Operamos bajo estricto cumplimiento de la normativa chilena para garantizar la
+            tranquilidad de tu empresa y la continuidad de tu obra.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div
+              class="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10 hover:border-brand-orange/50 transition-colors group">
+              <div
+                class="p-2.5 rounded bg-black border border-white/15 group-hover:border-brand-orange text-brand-orange shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <polyline points="9 15 12 18 15 15" />
+                  <line x1="12" y1="18" x2="12" y2="12" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-white uppercase text-sm mb-1">Facturación Electrónica</h4>
+                <p class="text-xs text-gray-500">Documentación tributaria inmediata y válida ante el SII. Ideal para
+                  constructoras B2B.</p>
+              </div>
+            </div>
+            <div
+              class="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10 hover:border-brand-orange/50 transition-colors group">
+              <div
+                class="p-2.5 rounded bg-black border border-white/15 group-hover:border-brand-orange text-brand-orange shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-white uppercase text-sm mb-1">Normativa Laboral</h4>
+                <p class="text-xs text-gray-500">Operadores con contratos y seguros al día (Ley 16.744).</p>
+              </div>
+            </div>
+            <div
+              class="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10 hover:border-brand-orange/50 transition-colors group">
+              <div
+                class="p-2.5 rounded bg-black border border-white/15 group-hover:border-brand-orange text-brand-orange shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 17H2a3 3 0 000 6h20a3 3 0 000-6z" />
+                  <path d="M6 17V7a2 2 0 012-2h8a2 2 0 012 2v10" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-white uppercase text-sm mb-1">Seguridad en Obra</h4>
+                <p class="text-xs text-gray-500">Protocolos de seguridad y EPP certificado en cada faena.</p>
+              </div>
+            </div>
+            <div
+              class="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10 hover:border-brand-orange/50 transition-colors group">
+              <div
+                class="p-2.5 rounded bg-black border border-white/15 group-hover:border-brand-orange text-brand-orange shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-white uppercase text-sm mb-1">Empresa Establecida</h4>
+                <p class="text-xs text-gray-500">Domicilio comercial y patente municipal vigente en San Bernardo, RM.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative fade-up">
+          <div class="absolute -inset-6 bg-brand-orange/15 blur-3xl rounded-full opacity-25"></div>
+          <div
+            class="relative rounded-2xl border border-white/10 shadow-2xl bg-gradient-to-b from-[#141414] to-black p-10 text-center">
+            <div
+              class="w-24 h-24 rounded-full bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center mx-auto mb-6">
+              <span class="font-display font-bold text-4xl text-brand-orange">SII</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">Contribuyente Habilitado</h3>
+            <p class="text-gray-400 mb-8 font-light text-sm leading-relaxed">Rutificado y verificado para operar con
+              grandes empresas, constructoras y obras del sector B2B en Chile.</p>
+            <div
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange/10 border border-brand-orange/30 text-brand-orange font-bold uppercase tracking-wider text-sm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Factura Inmediata · Válida SII
+            </div>
+            <div class="mt-8 grid grid-cols-2 gap-4">
+              <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                <p class="text-brand-orange font-bold text-3xl font-display">+100</p>
+                <p class="text-gray-500 text-xs uppercase tracking-wider mt-1">Servicios</p>
+              </div>
+              <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                <p class="text-brand-orange font-bold text-3xl font-display">2023</p>
+                <p class="text-gray-500 text-xs uppercase tracking-wider mt-1">Fundados</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT FORM ===== -->
+  <section id="contacto" class="py-24 bg-black border-t border-white/10 scroll-mt-20">
+    <div class="container mx-auto px-4 md:px-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12 fade-up">
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-white uppercase mb-4 tracking-tight">Solicita tu
+            <span class="orange-text">Cotización Gratuita</span></h2>
+          <p class="text-gray-400 font-light">Respuesta en menos de 2 horas en horario laboral. Déjanos tus datos y
+            coordinamos tu servicio.</p>
+          <p class="text-xs text-gray-600 mt-3 uppercase tracking-wider">Precios netos + IVA · Válido para la Región
+            Metropolitana · Cumplimiento SERNAC</p>
+        </div>
+        <div class="relative rounded-2xl border border-white/10 shadow-2xl bg-[#111] overflow-hidden fade-up">
+          <div class="absolute top-0 left-0 w-full h-1 orange-btn"></div>
+          <div class="p-8 md:p-10">
+            <!-- SUCCESS STATE -->
+            <div id="form-success" class="hidden text-center py-10">
+              <div
+                class="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-green-500/20">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-2">¡Solicitud Recibida!</h3>
+              <p class="text-gray-400 mb-6">Gracias por contactarnos. Te responderemos a la brevedad para coordinar tu
+                servicio.</p>
+              <button onclick="resetForm()"
+                class="text-brand-orange hover:text-white transition-colors font-medium underline">Enviar otra
+                solicitud</button>
+            </div>
+            <!-- FORM -->
+            <form id="contact-form" class="space-y-5" novalidate>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Nombre o Empresa
+                    *</label>
+                  <input type="text" id="f-name" required placeholder="Tu nombre o razón social" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Teléfono *</label>
+                  <input type="tel" id="f-phone" required placeholder="+56 9 xxxx xxxx" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Email *</label>
+                <input type="email" id="f-email" required placeholder="contacto@empresa.com" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Servicio
+                  requerido</label>
+                <select id="f-service" style="appearance:none">
+                  <option value="">Selecciona un servicio...</option>
+                  <option>Retiro de Escombros</option>
+                  <option>Movimiento de Tierras</option>
+                  <option>Preparación de Terrenos</option>
+                  <option>Excavaciones Generales</option>
+                  <option>Servicio de Minicargador</option>
+                  <option>Otro / Consulta general</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Descripción del
+                  Proyecto *</label>
+                <textarea id="f-message" required rows="4"
+                  placeholder="Describe tu proyecto: ubicación, superficie aproximada, plazo estimado..."></textarea>
+              </div>
+              <div id="form-error"
+                class="hidden items-center gap-2 text-red-400 bg-red-500/10 p-4 rounded-lg border border-red-500/20 text-sm">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                <span>Hubo un error al enviar. Intenta nuevamente o llámanos al +56 9 5841 9301.</span>
+              </div>
+              <button type="submit" id="submit-btn"
+                class="orange-btn w-full text-white font-bold py-4 px-8 rounded-lg flex items-center justify-center uppercase tracking-wide hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                <span id="btn-text">Enviar Solicitud de Cotización &rarr;</span>
+                <span id="btn-loading" class="hidden items-center gap-2">
+                  <span
+                    class="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                  Enviando...
+                </span>
+              </button>
+              <p class="text-center text-xs text-gray-600 mt-2">Al enviar, aceptas que nos comuniquemos contigo para
+                coordinar tu servicio. No compartimos tus datos con terceros.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="asphalt text-white pt-16 pb-8 border-t border-white/10">
+    <div class="container mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div class="space-y-5">
+          <div class="flex items-center gap-3">
+            <svg width="40" height="40" viewBox="0 0 44 44" fill="none">
+              <rect width="44" height="44" rx="7" fill="#FF6600" /><text x="22" y="30" font-family="Oswald,sans-serif"
+                font-size="18" font-weight="700" fill="white" text-anchor="middle">TB</text>
+            </svg>
+            <span class="font-display font-bold text-2xl tracking-tight">TRANSBRAVO</span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed font-light">Empresa fundada en 2023. Especialistas en
+            movimiento de tierras, excavaciones y retiro de escombros en la Región Metropolitana de Chile.</p>
+          <div class="flex gap-3">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+              class="w-10 h-10 rounded black-chrome flex items-center justify-center hover:scale-110 transition-transform text-gray-400 hover:text-white">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+              class="w-10 h-10 rounded black-chrome flex items-center justify-center hover:scale-110 transition-transform text-gray-400 hover:text-white">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-display font-bold text-lg uppercase mb-5 text-brand-orange tracking-wider">Navegación</h4>
+          <ul class="space-y-3 text-gray-400 font-light text-sm">
+            <li><a href="#" class="hover:text-brand-orange transition-colors">Inicio</a></li>
+            <li><a href="#servicios" class="hover:text-brand-orange transition-colors">Servicios</a></li>
+            <li><a href="#equipos" class="hover:text-brand-orange transition-colors">Equipos</a></li>
+            <li><a href="#nosotros" class="hover:text-brand-orange transition-colors">Nosotros</a></li>
+            <li><a href="#contacto" class="hover:text-brand-orange transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-bold text-lg uppercase mb-5 text-brand-orange tracking-wider">Servicios</h4>
+          <ul class="space-y-3 text-gray-400 font-light text-sm">
+            <li><a href="#servicios" class="hover:text-brand-orange transition-colors">Retiro de Escombros</a></li>
+            <li><a href="#servicios" class="hover:text-brand-orange transition-colors">Movimiento de Tierras</a></li>
+            <li><a href="#servicios" class="hover:text-brand-orange transition-colors">Excavaciones Generales</a></li>
+            <li><a href="#servicios" class="hover:text-brand-orange transition-colors">Preparación de Terrenos</a></li>
+            <li><a href="#servicios" class="hover:text-brand-orange transition-colors">Servicio de Minicargador</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-bold text-lg uppercase mb-5 text-brand-orange tracking-wider">Contacto</h4>
+          <ul class="space-y-4 text-gray-400 font-light text-sm">
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 shrink-0 text-brand-orange" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Lo Infante, Parcela 8 – San Bernardo, RM</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="shrink-0 text-brand-orange" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12 19.79 19.79 0 011.47 3.46A2 2 0 013.45 1.28h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+              </svg>
+              <a href="https://wa.me/56958419301?text=Hola%20Transbravo%2C%20necesito%20cotizar%20un%20servicio."
+                target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">+56 9 5841 9301</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="shrink-0 text-brand-orange" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <a href="mailto:Jonathanbravovera_99@gmail.com"
+                class="hover:text-white transition-colors break-all">Jonathanbravovera_99@gmail.com</a>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 shrink-0 text-brand-orange" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span>Lunes a Sábado · 08:00 – 18:00 hrs.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-light gap-4">
+        <div>
+          <p>&copy; 2023–2026 TRANSBRAVO · Movimiento de Tierras y Retiro de Escombros · Región Metropolitana, Chile.
+          </p>
+          <p class="mt-1 opacity-70">Operamos bajo la normativa del SERNAC y leyes chilenas vigentes. Los precios
+            informados son valores netos y no incluyen IVA.</p>
+        </div>
+        <div class="flex gap-6 shrink-0">
+          <a href="#" class="hover:text-white transition-colors">Privacidad</a>
+          <a href="#" class="hover:text-white transition-colors">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP BUTTON ===== -->
+  <a href="https://wa.me/56958419301?text=Hola%20Transbravo%2C%20necesito%20cotizar%20un%20servicio%20de%20maquinaria."
+    target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"
+    class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full wa-pulse hover:bg-[#1fbb5b] hover:scale-110 transition-all duration-300 flex items-center group">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="white" class="relative z-10 shrink-0">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+    <span
+      class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-3 transition-all duration-500 whitespace-nowrap font-bold text-sm relative z-10">Cotizar
+      Ahora</span>
+  </a>
+
+  <!-- ===== SERVICE MODAL ===== -->
+  <div id="svc-modal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="bg-[#111] border border-white/15 rounded-2xl max-w-md w-full p-8 relative shadow-2xl">
+      <button onclick="closeModal()"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-gray-400 hover:text-white transition-colors text-xl leading-none">&times;</button>
+      <div id="m-icon" class="text-brand-orange mb-4"></div>
+      <h3 id="m-title" class="font-display font-bold text-2xl text-white uppercase mb-4"></h3>
+      <p id="m-desc" class="text-gray-400 leading-relaxed text-sm mb-5"></p>
+      <ul id="m-specs" class="space-y-2 mb-5"></ul>
+      <p id="m-machine"
+        class="text-xs text-brand-orange uppercase font-bold tracking-widest border-t border-white/10 pt-4 mb-5"></p>
+      <a href="#contacto" onclick="closeModal()"
+        class="orange-btn w-full text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center uppercase tracking-wide hover:brightness-110 transition-all">Cotizar
+        Este Servicio &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    const SVC = {
+      escombros: { title: 'Retiro de Escombros', desc: 'La acumulación de escombros frena el avance de tu construcción y puede generar multas. En Transbravo gestionamos el retiro rápido de excedentes, demoliciones y basura con nuestra flota de camiones tolva, asegurando disposición en vertederos autorizados.', specs: ['Retiro de escombros de construcción', 'Limpieza de restos de demolición', 'Disposición en botaderos autorizados', 'Camiones Tolva de alto tonelaje'], machine: 'Maquinaria: Camiones Tolva International 7400 y Freightliner FL12.' },
+      tierras: { title: 'Movimiento de Tierras', desc: 'Un terreno mal nivelado compromete la estructura de tu proyecto. Ejecutamos movimientos de tierra masivos y de precisión, garantizando las cotas exactas y la estabilidad que tu obra necesita.', specs: ['Cortes y rellenos', 'Perfilado de taludes', 'Mejoramiento de suelos', 'Compactación técnica'], machine: 'Maquinaria: Retroexcavadora New Holland y Minicargador Bobcat S160.' },
+      preparacion: { title: 'Preparación de Terrenos', desc: 'Antes de construir, necesitas un lienzo limpio. Eliminamos capa vegetal, raíces y basura, entregándote una plataforma nivelada y lista para las fundaciones.', specs: ['Limpieza de parcelas', 'Nivelación láser', 'Preparación de cancha', 'Despeje de capa vegetal'], machine: 'Maquinaria: Retroexcavadora New Holland.' },
+      excavaciones: { title: 'Excavaciones Generales', desc: 'Una excavación mal hecha puede romper servicios básicos y costar millones. Nuestros operadores realizan zanjas para servicios, fosas y piscinas con cuidado y precisión técnica.', specs: ['Zanjas para servicios básicos', 'Excavación para piscinas', 'Fosas y cámaras sépticas', 'Fundaciones de obras'], machine: 'Maquinaria: Retroexcavadora New Holland.' },
+      minicargador: { title: 'Servicio de Minicargador', desc: 'No detengas la obra por falta de espacio. Nuestro servicio de minicargador es la solución ágil para mover materiales y limpiar en lugares estrechos o de difícil acceso.', specs: ['Trabajo en espacios reducidos', 'Carga y distribución de áridos', 'Barrido y limpieza de faena', 'Apoyo a excavaciones'], machine: 'Maquinaria: Minicargador Bobcat S160.' }
+    };
+    function openModal(k) {
+      const s = SVC[k];
+      document.getElementById('m-title').textContent = s.title;
+      document.getElementById('m-desc').textContent = s.desc;
+      document.getElementById('m-specs').innerHTML = s.specs.map(x => `<li class="flex items-center gap-2 text-gray-300 text-sm"><span class="text-brand-orange font-bold text-base">✓</span>${x}</li>`).join('');
+      document.getElementById('m-machine').textContent = s.machine;
+      document.getElementById('svc-modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() { document.getElementById('svc-modal').classList.remove('open'); document.body.style.overflow = ''; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // Navbar scroll
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+
+    // Mobile menu
+    const mBtn = document.getElementById('menu-btn'), mMenu = document.getElementById('mobile-menu'), iOpen = document.getElementById('ico-open'), iClose = document.getElementById('ico-close');
+    mBtn.addEventListener('click', () => {
+      const hidden = mMenu.classList.toggle('hidden');
+      iOpen.classList.toggle('hidden', !hidden);
+      iClose.classList.toggle('hidden', hidden);
+    });
+    document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => { mMenu.classList.add('hidden'); iOpen.classList.remove('hidden'); iClose.classList.add('hidden'); }));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Form
+    // ⚡ FASE 5 — Reemplaza esta URL con tu webhook de n8n cuando esté activo
+    const WEBHOOK = 'https://YOUR_N8N_WEBHOOK_URL_HERE';
+    document.getElementById('contact-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const bTxt = document.getElementById('btn-text');
+      const bLoad = document.getElementById('btn-loading');
+      const errDiv = document.getElementById('form-error');
+      btn.disabled = true; bTxt.classList.add('hidden'); bLoad.classList.remove('hidden'); bLoad.classList.add('flex'); errDiv.classList.add('hidden');
+      const data = { nombre: document.getElementById('f-name').value, telefono: document.getElementById('f-phone').value, email: document.getElementById('f-email').value, servicio: document.getElementById('f-service').value, mensaje: document.getElementById('f-message').value, fecha: new Date().toISOString(), fuente: 'transbravo-landing' };
+      try {
+        if (WEBHOOK.includes('YOUR_N8N')) { await new Promise(r => setTimeout(r, 1200)); console.log('Lead (demo):', data); }
+        else { const r = await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }); if (!r.ok) throw new Error(); }
+        document.getElementById('contact-form').classList.add('hidden');
+        document.getElementById('form-success').classList.remove('hidden');
+      } catch () {
+        errDiv.classList.remove('hidden'); errDiv.classList.add('flex');
+        btn.disabled = false; bTxt.classList.remove('hidden'); bLoad.classList.add('hidden'); bLoad.classList.remove('flex');
+      }
+    });
+    function resetForm() { document.getElementById('contact-form').reset(); document.getElementById('contact-form').classList.remove('hidden'); document.getElementById('form-success').classList.add('hidden'); }
+  </script>
+</body>
+
+</html>
