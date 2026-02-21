@@ -24,11 +24,11 @@
     }
 
     .hero-bg {
-      background: linear-gradient(to right, rgba(0, 0, 0, .95) 0%, rgba(0, 0, 0, .75) 60%, rgba(0, 0, 0, .5) 100%), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat fixed
+      background: linear-gradient(to right, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, .65) 60%, rgba(0, 0, 0, .45) 100%), url('images/equipos-maquinaria/maquinaria-y-camiones-v2.jpeg') center/cover no-repeat fixed
     }
 
     .asphalt {
-      background: linear-gradient(rgba(10, 10, 10, .93), rgba(5, 5, 5, .94)), url('https://images.unsplash.com/photo-1533425557766-3d29a5925340?q=80&w=2000&auto=format&fit=crop') repeat 400px fixed
+      background: linear-gradient(rgba(10, 10, 10, .93), rgba(5, 5, 5, .94)), url('images/equipos-maquinaria/Maquinaria-y-camiones.jpeg') repeat 400px fixed
     }
 
     .orange-btn {
@@ -156,13 +156,11 @@
   <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
     <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
       <a href="#" class="flex items-center gap-3 shrink-0">
-        <svg width="42" height="42" viewBox="0 0 44 44" fill="none">
-          <rect width="44" height="44" rx="7" fill="#FF6600" /><text x="22" y="30" font-family="Oswald,sans-serif"
-            font-size="18" font-weight="700" fill="white" text-anchor="middle">TB</text>
-        </svg>
+        <img src="images/logos/Logo-sin-texto-sin-fondo.png" alt="Transbravo Logo" class="h-12 w-12 object-contain" />
         <div>
-          <span
-            class="font-display font-bold text-xl md:text-2xl text-white tracking-tight leading-none block">TRANSBRAVO</span>
+          <img src="images/logos/Logo-con-texto-sin-fondo.png" alt="TRANSBRAVO"
+            class="h-10 object-contain hidden md:block" />
+          <span class="md:hidden font-display font-bold text-xl text-white tracking-tight">TRANSBRAVO</span>
           <span
             class="hidden md:block text-[10px] text-gray-400 tracking-widest uppercase leading-tight mt-0.5">Movimiento
             de Tierra · Maquinaria · RM</span>
@@ -382,7 +380,7 @@
           </div>
         </div>
         <!-- Card 5 Full -->
-        <div class="md:col-span-3 black-chrome rounded-xl overflow-hidden card-hover group"
+        <div class="md:col-span-3 black-chrome rounded-xl overflow-hidden card-hover"
           onclick="openModal('minicargador')">
           <div class="bar"></div>
           <div class="p-8 flex flex-col md:flex-row md:items-center gap-8">
@@ -424,19 +422,15 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="black-chrome rounded-xl overflow-hidden card-hover">
-          <div class="h-1 orange-btn"></div>
-          <div class="p-8">
-            <div class="mb-5 text-brand-orange"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="1.5">
-                <rect x="1" y="3" width="15" height="13" rx="2" />
-                <path d="M16 8h4l3 3v5h-7V8z" />
-                <circle cx="5.5" cy="18.5" r="2.5" />
-                <circle cx="18.5" cy="18.5" r="2.5" />
-              </svg></div>
-            <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Camiones Tolva</h3>
-            <p class="text-brand-orange font-bold text-sm uppercase tracking-wider mb-4">International 7400 ·
+          <div class="h-48 overflow-hidden">
+            <img src="images/equipos-maquinaria/camion_tolva.png" alt="Camión Tolva Transbravo"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Camiones Tolva</h3>
+            <p class="text-brand-orange font-bold text-sm uppercase tracking-wider mb-3">International 7400 ·
               Freightliner FL12</p>
-            <p class="text-gray-400 text-sm leading-relaxed mb-5">Alto tonelaje para retiro rápido de escombros y
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">Alto tonelaje para retiro rápido de escombros y
               excedentes en toda la Región Metropolitana. Coordinación inmediata.</p>
             <div class="border-t border-white/10 pt-4">
               <p class="text-xs text-gray-500 uppercase tracking-widest">👉 Aptos para obras pequeñas y medianas en la
@@ -445,17 +439,14 @@
           </div>
         </div>
         <div class="black-chrome rounded-xl overflow-hidden card-hover">
-          <div class="h-1 orange-btn"></div>
-          <div class="p-8">
-            <div class="mb-5 text-brand-orange"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="1.5">
-                <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                <polyline points="2 17 12 22 22 17" />
-                <polyline points="2 12 12 17 22 12" />
-              </svg></div>
-            <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Retroexcavadora</h3>
-            <p class="text-brand-orange font-bold text-sm uppercase tracking-wider mb-4">New Holland</p>
-            <ul class="text-gray-300 text-sm space-y-1.5 list-disc list-inside mb-5">
+          <div class="h-48 overflow-hidden">
+            <img src="images/equipos-maquinaria/retroexcavadora.png" alt="Retroexcavadora New Holland Transbravo"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Retroexcavadora</h3>
+            <p class="text-brand-orange font-bold text-sm uppercase tracking-wider mb-3">New Holland</p>
+            <ul class="text-gray-300 text-sm space-y-1.5 list-disc list-inside mb-4">
               <li>Excavaciones generales y zanjas</li>
               <li>Movimiento de tierras</li>
               <li>Preparación de terrenos</li>
@@ -467,18 +458,14 @@
           </div>
         </div>
         <div class="black-chrome rounded-xl overflow-hidden card-hover">
-          <div class="h-1 orange-btn"></div>
-          <div class="p-8">
-            <div class="mb-5 text-brand-orange"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="8" width="12" height="10" rx="2" />
-                <path d="M14 12h4l2 2v4h-6v-6z" />
-                <circle cx="6" cy="20" r="2" />
-                <circle cx="18" cy="20" r="2" />
-              </svg></div>
-            <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Minicargador</h3>
-            <p class="text-brand-orange font-bold text-sm uppercase tracking-wider mb-4">Bobcat S160</p>
-            <p class="text-gray-400 text-sm leading-relaxed mb-4">Donde la maquinaria grande no puede entrar, el Bobcat
+          <div class="h-48 overflow-hidden">
+            <img src="images/equipos-maquinaria/minicargador.png" alt="Minicargador Bobcat S160 Transbravo"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Minicargador</h3>
+            <p class="text-brand-orange font-bold text-sm uppercase tracking-wider mb-3">Bobcat S160</p>
+            <p class="text-gray-400 text-sm leading-relaxed mb-3">Donde la maquinaria grande no puede entrar, el Bobcat
               encuentra el camino. Ideal para obras urbanas y espacios reducidos.</p>
             <ul class="text-gray-300 text-sm space-y-1.5 list-disc list-inside">
               <li>Carga y distribución de áridos</li>
@@ -567,30 +554,35 @@
         </div>
         <div class="relative fade-up">
           <div class="absolute -inset-6 bg-brand-orange/15 blur-3xl rounded-full opacity-25"></div>
-          <div
-            class="relative rounded-2xl border border-white/10 shadow-2xl bg-gradient-to-b from-[#141414] to-black p-10 text-center">
-            <div
-              class="w-24 h-24 rounded-full bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center mx-auto mb-6">
-              <span class="font-display font-bold text-4xl text-brand-orange">SII</span>
+          <div class="relative rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
+            <div class="h-52 overflow-hidden">
+              <img src="images/equipos-maquinaria/maquinaria-con-nombre-marca-v2.png"
+                alt="Maquinaria Transbravo con marca" class="w-full h-full object-cover" />
             </div>
-            <h3 class="text-2xl font-bold text-white mb-2">Contribuyente Habilitado</h3>
-            <p class="text-gray-400 mb-8 font-light text-sm leading-relaxed">Rutificado y verificado para operar con
-              grandes empresas, constructoras y obras del sector B2B en Chile.</p>
-            <div
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange/10 border border-brand-orange/30 text-brand-orange font-bold uppercase tracking-wider text-sm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Factura Inmediata · Válida SII
-            </div>
-            <div class="mt-8 grid grid-cols-2 gap-4">
-              <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-                <p class="text-brand-orange font-bold text-3xl font-display">+100</p>
-                <p class="text-gray-500 text-xs uppercase tracking-wider mt-1">Servicios</p>
+            <div class="bg-gradient-to-b from-[#141414] to-black p-8 text-center">
+              <div
+                class="w-20 h-20 rounded-full bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center mx-auto mb-5 -mt-12 relative z-10 shadow-xl">
+                <span class="font-display font-bold text-3xl text-brand-orange">SII</span>
               </div>
-              <div class="bg-white/5 rounded-lg p-4 border border-white/10">
-                <p class="text-brand-orange font-bold text-3xl font-display">2023</p>
-                <p class="text-gray-500 text-xs uppercase tracking-wider mt-1">Fundados</p>
+              <h3 class="text-2xl font-bold text-white mb-2">Contribuyente Habilitado</h3>
+              <p class="text-gray-400 mb-6 font-light text-sm leading-relaxed">Rutificado y verificado para operar con
+                grandes empresas, constructoras y obras del sector B2B en Chile.</p>
+              <div
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange/10 border border-brand-orange/30 text-brand-orange font-bold uppercase tracking-wider text-sm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Factura Inmediata · Válida SII
+              </div>
+              <div class="mt-6 grid grid-cols-2 gap-4">
+                <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                  <p class="text-brand-orange font-bold text-3xl font-display">+100</p>
+                  <p class="text-gray-500 text-xs uppercase tracking-wider mt-1">Servicios</p>
+                </div>
+                <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                  <p class="text-brand-orange font-bold text-3xl font-display">2023</p>
+                  <p class="text-gray-500 text-xs uppercase tracking-wider mt-1">Fundados</p>
+                </div>
               </div>
             </div>
           </div>
@@ -605,7 +597,8 @@
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-12 fade-up">
           <h2 class="font-display font-bold text-3xl md:text-4xl text-white uppercase mb-4 tracking-tight">Solicita tu
-            <span class="orange-text">Cotización Gratuita</span></h2>
+            <span class="orange-text">Cotización Gratuita</span>
+          </h2>
           <p class="text-gray-400 font-light">Respuesta en menos de 2 horas en horario laboral. Déjanos tus datos y
             coordinamos tu servicio.</p>
           <p class="text-xs text-gray-600 mt-3 uppercase tracking-wider">Precios netos + IVA · Válido para la Región
@@ -699,11 +692,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
         <div class="space-y-5">
           <div class="flex items-center gap-3">
-            <svg width="40" height="40" viewBox="0 0 44 44" fill="none">
-              <rect width="44" height="44" rx="7" fill="#FF6600" /><text x="22" y="30" font-family="Oswald,sans-serif"
-                font-size="18" font-weight="700" fill="white" text-anchor="middle">TB</text>
-            </svg>
-            <span class="font-display font-bold text-2xl tracking-tight">TRANSBRAVO</span>
+            <img src="images/logos/Logo-sin-texto-sin-fondo.png" alt="Transbravo" class="h-12 w-12 object-contain" />
+            <img src="images/logos/Logo-con-texto-sin-fondo.png" alt="TRANSBRAVO" class="h-10 object-contain" />
           </div>
           <p class="text-gray-400 text-sm leading-relaxed font-light">Empresa fundada en 2023. Especialistas en
             movimiento de tierras, excavaciones y retiro de escombros en la Región Metropolitana de Chile.</p>
