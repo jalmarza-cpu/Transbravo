@@ -80,6 +80,32 @@
       background-size: 300px 300px
     }
 
+    /* ===== HERO — Foto real de maquinaria + overlay + textura integrada ===== */
+    .hero-bg {
+      background:
+        linear-gradient(to right, rgba(0, 0, 0, .90) 0%, rgba(0, 0, 0, .65) 55%, rgba(0, 0, 0, .40) 100%),
+        url('images/equipos-maquinaria/maquinaria-y-camiones-v2.jpeg') center/cover no-repeat;
+      position: relative
+    }
+
+    /* Capa de textura de asfalto sutil sobre el hero — une la estetica con el resto del sitio */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: var(--asphalt-texture);
+      background-size: 280px 280px;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0
+    }
+
+    /* El contenido del hero flota por encima de la textura */
+    .hero-bg>* {
+      position: relative;
+      z-index: 1
+    }
+
     .orange-btn {
       background: linear-gradient(180deg, #FF9800 0%, #FF5722 45%, #E64A19 50%, #D84315 100%);
       border: 1px solid #BF360C;
@@ -91,6 +117,7 @@
         0 0 56px rgba(255, 102, 0, .08);
       transition: box-shadow .3s ease, filter .3s ease
     }
+
 
     .orange-btn:hover {
       box-shadow:
