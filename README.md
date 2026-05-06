@@ -4,29 +4,56 @@ Landing page estática para Transbravo, empresa de movimiento de tierras y retir
 
 ## Tecnología
 
-- HTML5 puro (sin framework, sin compilación)
-- Tailwind CSS via CDN
-- Google Fonts (Oswald + Roboto)
+- HTML5 puro (sin framework, sin compilación, sin paso de build)
+- Tailwind CSS via CDN (configurado inline en `index.html`)
+- Google Fonts: Oswald (display) + Roboto (texto)
 - JavaScript vanilla
+- Iconos SVG inline
 
-## Despliegue en Easypanel
+Toda la página vive en `index.html`. Los assets están en `images/` y `videos/`.
 
-Este proyecto es un **Static Site**. El archivo `index.html` debe estar en la **raíz del repositorio**.
+## Desarrollo local
+
+No hay paso de build. Abrir `index.html` directamente en el navegador, o servirlo con cualquier servidor estático:
+
+```bash
+# Cualquiera de estos sirve
+python -m http.server 8000
+npx serve .
+```
+
+## Despliegue en Easypanel (producción)
+
+El sitio se despliega como contenedor Docker basado en nginx. El `Dockerfile` copia los archivos del repo a `/usr/share/nginx/html` y nginx sirve `index.html` con la política de caché definida en `nginx.conf`.
 
 **Configuración en Easypanel:**
-- Tipo: Static
-- Directorio raíz: `/` (raíz)
-- No requiere build command
-- No requiere install command
+- Tipo: Docker / App
+- Build: usa el `Dockerfile` del repo
+- Puerto expuesto: 80
 
-## Fase 5 — Integración n8n
+Build local del contenedor para probar:
 
-El formulario de contacto tiene un placeholder para el webhook de n8n.
-Buscar en `index.html`:
+```bash
+docker build -t transbravo-landing .
+docker run -p 8080:80 transbravo-landing
+# abrir http://localhost:8080
+```
+
+## Política de caché (`nginx.conf`)
+
+- `*.html` → sin caché (cada deploy es visible al instante)
+- Imágenes/video → 7 días
+- JS/CSS/fuentes → 1 día
+
+## Integración n8n (formulario de contacto)
+
+El formulario de contacto envía a un webhook de n8n. Buscar en `index.html`:
+
 ```js
 const WEBHOOK = 'https://YOUR_N8N_WEBHOOK_URL_HERE';
 ```
-Reemplazar con la URL del webhook activo.
+
+Reemplazar con la URL del webhook activo antes de desplegar a producción.
 
 ## Contacto
 
